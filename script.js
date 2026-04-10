@@ -1,51 +1,47 @@
-const requisitos = {
+body {
+  font-family: Arial;
+  background: #ffe6f0;
+  text-align: center;
+}
 
-  bioquimica: ["quimica"],
-  matro1: ["histo"],
+h1 {
+  color: #cc0066;
+}
 
-  fisiologia: ["fisica", "biologia"],
-  sexualidad: ["humanista"],
-  educacion: ["humanista"],
-  matro2: ["matro1"],
+.malla {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
 
-  fisiologia2: ["fisiologia", "bioquimica", "histo"],
-  micro1: ["biologia", "bioquimica"],
-  gine1: ["sexualidad"],
-  obste1: ["matro2", "histo"]
+.semestre {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 220px;
+}
 
-};
+.ramo {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
 
-const ramos = document.querySelectorAll(".ramo");
+.locked {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
 
-ramos.forEach(ramo => {
-  ramo.addEventListener("click", () => {
+.unlocked {
+  background: #ff99cc;
+  color: white;
+}
 
-    if (ramo.classList.contains("locked")) return;
-
-    ramo.classList.toggle("approved");
-
-    actualizarEstado();
-  });
-});
-
-function actualizarEstado() {
-
-  Object.keys(requisitos).forEach(ramoId => {
-    const ramo = document.getElementById(ramoId);
-    const reqs = requisitos[ramoId];
-
-    const cumplidos = reqs.every(req =>
-      document.getElementById(req).classList.contains("approved")
-    );
-
-    if (cumplidos) {
-      ramo.classList.remove("locked");
-      ramo.classList.add("unlocked");
-    } else {
-      if (!ramo.classList.contains("approved")) {
-        ramo.classList.add("locked");
-        ramo.classList.remove("unlocked");
-      }
-    }
-  });
+.approved {
+  background: #cc0066;
+  text-decoration: line-through;
 }
