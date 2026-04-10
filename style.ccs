@@ -1,6 +1,6 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #ffe6f0;
+  font-family: Arial;
+  background: #ffe6f0;
   text-align: center;
 }
 
@@ -8,37 +8,40 @@ h1 {
   color: #cc0066;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(5, 150px);
-  gap: 15px;
+.malla {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-top: 30px;
+  gap: 20px;
+}
+
+.semestre {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 220px;
 }
 
 .ramo {
-  padding: 15px;
-  border-radius: 10px;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  transition: 0.3s;
+  font-size: 13px;
 }
 
-/* Estados */
 .locked {
-  background-color: #ccc;
+  background: #ccc;
   color: #666;
   cursor: not-allowed;
 }
 
 .unlocked {
-  background-color: #ff99cc;
+  background: #ff99cc;
   color: white;
 }
 
 .approved {
-  background-color: #cc0066;
-  color: white;
+  background: #cc0066;
   text-decoration: line-through;
 }
