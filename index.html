@@ -1,114 +1,183 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Malla obstetricia</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Interactiva Obstetricia</title>
+    <style>
+        :root {
+            --pink-light: #fce4ec;
+            --pink-main: #f06292;
+            --pink-dark: #880e4f;
+            --bg-color: #fff5f8;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--pink-dark);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        p.instrucciones {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .malla-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .semestre {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 2px solid var(--pink-light);
+        }
+
+        .semestre h2 {
+            background-color: var(--pink-main);
+            color: white;
+            margin: -15px -15px 15px -15px;
+            padding: 10px;
+            border-radius: 12px 12px 0 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .curso {
+            background-color: #fff;
+            border: 1px solid #eee;
+            margin-bottom: 8px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .curso:hover {
+            transform: scale(1.02);
+            box-shadow: 0 2px 8px rgba(240, 98, 146, 0.3);
+            border-color: var(--pink-main);
+        }
+
+        /* Clases para la interactividad */
+        .highlight-master {
+            background-color: var(--pink-main) !important;
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .highlight-child {
+            background-color: var(--pink-light) !important;
+            border: 1px solid var(--pink-main) !important;
+            transform: scale(1.02);
+        }
+
+        .cr {
+            font-size: 0.7rem;
+            color: #888;
+            display: block;
+        }
+
+        .highlight-master .cr, .highlight-child .cr {
+            color: inherit;
+        }
+
+        @media (max-width: 768px) {
+            .malla-container { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-<h1>Malla Interactiva obstetricia 🌸</h1>
+    <h1>🌸 Malla Curricular Obstetricia 🌸</h1>
+    <p class="instrucciones">Pasa el mouse sobre un ramo para ver qué asignaturas abre en el futuro.</p>
 
-<div class="malla">
+    <div class="malla-container">
+        <div class="semestre">
+            <h2>Semestre 1</h2>
+            <div class="curso" data-opens="bioquimica">Química General y Orgánica <span class="cr">4 Cr</span></div>
+            <div class="curso" data-opens="fisiologia-gen">Biología y Genética <span class="cr">7 Cr</span></div>
+            <div class="curso">Matemáticas <span class="cr">3 Cr</span></div>
+            <div class="curso" data-opens="sexualidad educacion">Fundamentos Humanistas <span class="cr">6 Cr</span></div>
+            <div class="curso" data-opens="salud-fam-1">Demografía y Epidemiología <span class="cr">7 Cr</span></div>
+            <div class="curso">Formación General I <span class="cr">2 Cr</span></div>
+        </div>
 
-<!-- 1° AÑO -->
-<div class="semestre">
-<h2>1° Semestre</h2>
-<div class="ramo unlocked" id="quimica">Química</div>
-<div class="ramo unlocked" id="biologia">Biología</div>
-<div class="ramo unlocked" id="mate">Matemáticas</div>
-<div class="ramo unlocked" id="humanista">Fundamentos Humanistas</div>
-<div class="ramo unlocked" id="demo">Demografía</div>
-<div class="ramo unlocked" id="fg1">Formación General I</div>
-</div>
+        <div class="semestre">
+            <h2>Semestre 2</h2>
+            <div class="curso id-bioquimica" data-opens="fisio-sist microbiologia">Bioquímica del Metabolismo <span class="cr">3 Cr</span></div>
+            <div class="curso" data-opens="fisiologia-gen">Física <span class="cr">3 Cr</span></div>
+            <div class="curso">Anatomía <span class="cr">5 Cr</span></div>
+            <div class="curso" data-opens="fisio-sist obstetricia-1">Histología y Embriología <span class="cr">5 Cr</span></div>
+            <div class="curso" data-opens="matroneria-2">Matronería Aplicada I <span class="cr">7 Cr</span></div>
+            <div class="curso" data-opens="habilidades">Gestión y Liderazgo en Salud <span class="cr">5 Cr</span></div>
+            <div class="curso">Inglés I <span class="cr">3 Cr</span></div>
+        </div>
 
-<div class="semestre">
-<h2>2° Semestre</h2>
-<div class="ramo locked" id="bioquimica">Bioquímica</div>
-<div class="ramo unlocked" id="fisica">Física</div>
-<div class="ramo unlocked" id="anatomia">Anatomía</div>
-<div class="ramo unlocked" id="histo">Histología</div>
-<div class="ramo unlocked" id="matro1">Matronería I</div>
-<div class="ramo unlocked" id="gestion">Gestión</div>
-<div class="ramo unlocked" id="ingles1">Inglés I</div>
-</div>
+        <div class="semestre">
+            <h2>Semestre 3</h2>
+            <div class="curso id-fisiologia-gen" data-opens="fisio-sist">Fisiología General <span class="cr">4 Cr</span></div>
+            <div class="curso id-sexualidad" data-opens="gine-1">Salud Sexual y Sexualidad <span class="cr">4 Cr</span></div>
+            <div class="curso id-educacion" data-opens="clinica-int-ed">Educación en Salud <span class="cr">5 Cr</span></div>
+            <div class="curso id-matroneria-2" data-opens="obstetricia-1 neonatologia-1">Matronería Aplicada II <span class="cr">6 Cr</span></div>
+            <div class="curso id-salud-fam-1" data-opens="clinica-aps-1">Salud Familiar y Com. I <span class="cr">4 Cr</span></div>
+            <div class="curso id-habilidades" data-opens="identidad">Habilidades Psicosociales <span class="cr">4 Cr</span></div>
+            <div class="curso">Inglés II <span class="cr">3 Cr</span></div>
+        </div>
 
-<!-- 2° AÑO -->
-<div class="semestre">
-<h2>3° Semestre</h2>
-<div class="ramo locked" id="fisiologia">Fisiología</div>
-<div class="ramo locked" id="sexualidad">Sexualidad</div>
-<div class="ramo locked" id="educacion">Educación</div>
-<div class="ramo locked" id="matro2">Matronería II</div>
-<div class="ramo locked" id="salud1">Salud Comunitaria I</div>
-<div class="ramo locked" id="psico">Habilidades Psicosociales</div>
-<div class="ramo unlocked" id="ingles2">Inglés II</div>
-</div>
+        <div class="semestre">
+            <h2>Semestre 4</h2>
+            <div class="curso id-fisio-sist" data-opens="clinica-partos-1 clinica-neo-1 clinica-puerperio clinica-gine-1 fisiopatologia">Fisiología de Sistemas <span class="cr">6 Cr</span></div>
+            <div class="curso id-microbiologia" data-opens="clinica-partos-1 clinica-neo-1 clinica-puerperio clinica-gine-1 fisiopatologia microbiologia-2">Microbiología I <span class="cr">5 Cr</span></div>
+            <div class="curso id-gine-1" data-opens="clinica-aps-1 clinica-gine-1 gine-2">Ginecología I <span class="cr">5 Cr</span></div>
+            <div class="curso id-obstetricia-1" data-opens="clinica-partos-1 clinica-aps-1 clinica-puerperio obstetricia-2">Obstetricia I <span class="cr">6 Cr</span></div>
+            <div class="curso id-neonatologia-1" data-opens="clinica-neo-1 neonatologia-2">Neonatología I <span class="cr">6 Cr</span></div>
+            <div class="curso">Inglés III <span class="cr">3 Cr</span></div>
+        </div>
+    </div>
 
-<div class="semestre">
-<h2>4° Semestre</h2>
-<div class="ramo locked" id="fisiologia2">Fisiología Sistemas</div>
-<div class="ramo locked" id="micro1">Microbiología I</div>
-<div class="ramo locked" id="gine1">Ginecología I</div>
-<div class="ramo locked" id="obste1">Obstetricia I</div>
-<div class="ramo locked" id="neo1">Neonatología I</div>
-<div class="ramo unlocked" id="ingles3">Inglés III</div>
-</div>
+    <script>
+        document.querySelectorAll('.curso').forEach(curso => {
+            curso.addEventListener('mouseenter', () => {
+                // Resaltar el curso actual
+                curso.classList.add('highlight-master');
+                
+                // Obtener IDs de lo que abre
+                const opens = curso.getAttribute('data-opens');
+                if (opens) {
+                    const targets = opens.split(' ');
+                    targets.forEach(id => {
+                        document.querySelectorAll('.id-' + id).forEach(el => {
+                            el.classList.add('highlight-child');
+                        });
+                    });
+                }
+            });
 
-<!-- 3° AÑO -->
-<div class="semestre">
-<h2>5° Semestre</h2>
-<div class="ramo locked" id="partos1">Clínica Partos I</div>
-<div class="ramo locked" id="neoClin1">Clínica Neo I</div>
-<div class="ramo locked" id="aps1">APS I</div>
-<div class="ramo locked" id="puerperio">Puerperio</div>
-<div class="ramo locked" id="gineClin1">Clínica Gine I</div>
-<div class="ramo locked" id="invest">Investigación</div>
-<div class="ramo unlocked" id="epi1">EIP I</div>
-</div>
-
-<div class="semestre">
-<h2>6° Semestre</h2>
-<div class="ramo locked" id="fisiopato">Fisiopatología</div>
-<div class="ramo locked" id="micro2">Microbiología II</div>
-<div class="ramo locked" id="neo2">Neonatología II</div>
-<div class="ramo locked" id="salud2">Salud II</div>
-<div class="ramo locked" id="obste2">Obstetricia II</div>
-<div class="ramo locked" id="identidad">Identidad</div>
-<div class="ramo locked" id="evidencia">Evidencia</div>
-</div>
-
-<!-- 4° AÑO -->
-<div class="semestre">
-<h2>7° Semestre</h2>
-<div class="ramo locked" id="intervenciones">Intervenciones</div>
-<div class="ramo locked" id="mq">Matronería MQ</div>
-<div class="ramo locked" id="gine2">Gine II</div>
-<div class="ramo locked" id="seminario1">Seminario I</div>
-</div>
-
-<div class="semestre">
-<h2>8° Semestre</h2>
-<div class="ramo locked" id="altoRiesgo">Alto Riesgo</div>
-<div class="ramo locked" id="partos2">Partos II</div>
-<div class="ramo locked" id="gineClin2">Gine II Clínica</div>
-<div class="ramo locked" id="neoClin2">Neo II Clínica</div>
-<div class="ramo locked" id="aps2">APS II</div>
-<div class="ramo locked" id="seminario2">Seminario II</div>
-</div>
-
-<!-- 5° AÑO -->
-<div class="semestre">
-<h2>Internados</h2>
-<div class="ramo locked" id="intGine">Internado Gine</div>
-<div class="ramo locked" id="intAPS">Internado APS</div>
-<div class="ramo locked" id="intNeo">Internado Neo</div>
-<div class="ramo locked" id="intElec">Internado Electivo</div>
-<div class="ramo locked" id="intObste">Internado Obste</div>
-</div>
-
-</div>
-
-<script src="script.js"></script>
+            curso.addEventListener('mouseleave', () => {
+                // Quitar resaltados
+                document.querySelectorAll('.curso').forEach(el => {
+                    el.classList.remove('highlight-master', 'highlight-child');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
